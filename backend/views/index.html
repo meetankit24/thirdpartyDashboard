@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>API Dashboard</title>
+  <script>
+    async function loadAPIResponses(type) {
+      const response = await fetch(`/responses/${type}`);
+      const data = await response.json();
+      document.getElementById('content').innerHTML = JSON.stringify(data, null, 2);
+    }
+  </script>
+</head>
+<body>
+  <h1>API Dashboard</h1>
+  <button onclick="loadAPIResponses('soap')">SOAP APIs</button>
+  <button onclick="loadAPIResponses('rest')">REST APIs</button>
+  <pre id="content"></pre>
+</body>
+</html>
